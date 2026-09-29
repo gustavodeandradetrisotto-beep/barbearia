@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhe do Agendamento - {{ nome_barbearia }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #2c2c2c;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #b5892a;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin-top: 20px;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+        }
+        .card p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+        .voltar {
+            display: inline-block;
+            margin-top: 20px;
+            color: #b5892a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .voltar:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ nome_barbearia }}</h1>
+
+    <nav>
+        <a href="{{ url_for('index') }}">Início</a>
+        <a href="{{ url_for('agendamentos_view') }}">Agendamentos</a>
+    </nav>
+
+    {% if agendamento %}
+    <div class="card">
+        <h2>Detalhe do Agendamento #{{ agendamento.id }}</h2>
+        <p><strong>Cliente:</strong> {{ agendamento.cliente }}</p>
+        <p><strong>Telefone:</strong> {{ agendamento.telefone }}</p>
+        <p><strong>Serviço:</strong> {{ agendamento.servico }}</p>
+        <p><strong>Preço:</strong> R$ {{ agendamento.preco }}</p>
+        <p><strong>Barbeiro:</strong> {{ agendamento.barbeiro }}</p>
+        <p><strong>Data:</strong> {{ agendamento.data }}</p>
+        <p><strong>Horário:</strong> {{ agendamento.horario }}</p>
+        <p><strong>Status:</strong> {{ agendamento.status }}</p>
+    </div>
+    {% else %}
+    <div class="card">
+        <p>Agendamento não encontrado.</p>
+    </div>
+    {% endif %}
+
+    <a class="voltar" href="{{ url_for('agendamentos_view') }}">&laquo; Voltar para a listagem</a>
+</body>
+</html>

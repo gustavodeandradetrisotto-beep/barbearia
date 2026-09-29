@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ nome_barbearia }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #2c2c2c;
+        }
+        h1 {
+            border-bottom: 3px solid #b5892a;
+            padding-bottom: 10px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #b5892a;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin-top: 20px;
+            box-shadow: 0 0 6px rgba(0,0,0,0.1);
+        }
+        .card p {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ nome_barbearia }}</h1>
+
+    <nav>
+        <a href="{{ url_for('index') }}">Início</a>
+        <a href="{{ url_for('agendamentos_view') }}">Agendamentos</a>
+    </nav>
+
+    <div class="card">
+        <p>Bem-vindo ao sistema de agendamentos da barbearia!</p>
+        <!-- Filtro "length" utilizado para contar o total de agendamentos -->
+        <p>Total de agendamentos cadastrados: <strong>{{ agendamentos|length }}</strong></p>
+    </div>
+</body>
+</html>
